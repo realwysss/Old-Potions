@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "oldpotions",
+	"version": "${version}",
+	"name": "Old Potions",
+	"description": "potions like in 1.18: the old effect colors on bottles, particles and arrows, and the glint on potions with effects. every part has a switch.",
+	"authors": ["wysss"],
+	"contact": {"sources": "https://github.com/realwysss/Old-Potions"},
+	"license": "All-Rights-Reserved",
+	"icon": "assets/oldpotions/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["dev.oldp.OldP"],
+		"modmenu": ["dev.oldp.ModmenuIntgr"]
+	},
+	"mixins": [
+		{
+			"config": "oldpotions.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"suggests": {
+		"modmenu": "*",
+		"cloth-config": "*"
+	},
+	"depends": {
+		"fabricloader": ">=0.16.0",
+		"minecraft": "1.21.11",
+		"java": ">=21"
+	}
+}
