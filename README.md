@@ -4,7 +4,7 @@
 
 potions like in 1.18. the old effect colors and the glint on potions with effects.
 
-client side fabric mod for 1.21.11. settings through mod menu with cloth config, every part has a switch:
+client side fabric mod for 1.21.11. settings with the menu (key **;** or mod menu, needs [Wysss Library](https://github.com/realwysss/Wysss-Library)), every part has a switch:
 
 - **old colors**: the potion and effect colors from 1.18. this changes the color of the bottle, the swirl particles around you and the tipped arrows
 - **potion glint**: potions, splash potions and lingering potions with effects shine like they did in 1.18
@@ -15,7 +15,7 @@ the bottle textures of 1.18 and 1.21.11 are the same, the difference you see is 
 
 ## download
 
-`old-potions-mc1.21.11-1.0.0.jar` on the releases page. minecraft 1.21.11, fabric loader 0.16 or newer.
+`old-potions-mc1.21.11-1.1.0.jar` on the releases page. minecraft 1.21.11, fabric loader 0.16 or newer.
 
 ## pictures
 

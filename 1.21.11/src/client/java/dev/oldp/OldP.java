@@ -2,10 +2,20 @@ package dev.oldp;
 
 import java.util.HashMap;
 import net.fabricmc.api.ClientModInitializer;
+import com.mojang.blaze3d.platform.InputConstants;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 
 public class OldP implements ClientModInitializer {
+	public static KeyMapping key;
+
 	static final HashMap<String, Integer> OLD = new HashMap<>();
 	static final HashMap<MobEffect, Integer> CACHE = new HashMap<>();
 
@@ -46,6 +56,13 @@ public class OldP implements ClientModInitializer {
 
 	public void onInitializeClient() {
 		Cfg.ld();
+		KeyMapping kk = key = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.oldpotions.open", InputConstants.KEY_SEMICOLON, KeyMapping.Category.register(Identifier.fromNamespaceAndPath("oldpotions", "main"))));
+		ClientTickEvents.END_CLIENT_TICK.register(m -> {
+			while (kk.consumeClick()) if (m.screen == null) {
+				if (FabricLoader.getInstance().isModLoaded("wysslib")) m.setScreen(Gui.open(null));
+				else if (m.player != null) m.player.displayClientMessage(Component.literal("Old Potions needs Wysss Library to open its menu"), true);
+			}
+		});
 	}
 
 	public static int old(MobEffect e, int now) {
